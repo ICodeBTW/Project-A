@@ -1,0 +1,4 @@
+application/api/app/node_modules
+application/web/app/node_modules
+application/web/app/.astro
+application/web/app/.vscode

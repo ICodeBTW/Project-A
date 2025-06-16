@@ -1,0 +1,23 @@
+{
+  "name": "weather-api",
+  "version": "1.0.0",
+  "description": "Weather api server for the counter part webapp ",
+  "keywords": [
+    "express-app",
+    "weather-server"
+  ],
+  "license": "ISC",
+  "author": "Shreenidhi Bharadwaj",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "dev": "node app.js",
+    "serve": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "axios": "^1.10.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  }
+}

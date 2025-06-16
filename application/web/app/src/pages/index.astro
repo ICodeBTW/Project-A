@@ -1,0 +1,9 @@
+---
+import "../styles/global.css";
+import WeatherWidget from "../components/WeatherWidget";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <WeatherWidget client:only="react" />
+</BaseLayout>

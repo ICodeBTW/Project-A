@@ -1,0 +1,58 @@
+---
+import "../styles/global.css";
+import Header from "./Header.astro";
+import Hero from "../components/ui/Hero.astro";
+import Detail from "./Detail.astro";
+import Footer from "./Footer.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather — A Simple Forecast</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Charter:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Charter", "Georgia", serif;
+      }
+      .sans {
+        font-family:
+          "Inter",
+          system-ui,
+          -apple-system,
+          sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-900 antialiased">
+    <!-- Header -->
+    <Header />
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6">
+      <Hero />
+      <!-- Weather Widget Container -->
+      <section class="py-20">
+        <div class="flex justify-center">
+          <div class="w-full max-w-lg">
+            <div id="weather-widget-root">
+              <slot />
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Article-style content section -->
+      <Detail />
+    </main>
+    <!-- Footer -->
+    <Footer />
+  </body>
+</html>
