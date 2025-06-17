@@ -19,25 +19,37 @@ CMD ["run", "dev"]
 # build stage
 FROM devagent AS buildagent
 
-COPY . .
+USER node
 
-RUN ["npm", "run", "build"]
+COPY  --chown=node:node . .
+
+RUN ls
+
+RUN npm run build
 
 
 # Production stage
-FROM node:22-alpine AS prodagent
-WORKDIR /app
-RUN apk update --no-cache && apk upgrade
+FROM nginx:alpine AS prodagent
 
-COPY --from=buildagent /app/dist ./dist
-COPY --from=buildagent /app/package.json ./package.json
+COPY --from=buildagent /app/dist /usr/share/nginx/html
 
-RUN npm install --production
+RUN echo 'server { \
+	listen 80; \
+	server_name localhost; \
+	root /usr/share/nginx/html; \
+	index index.html; \
+	location / { \
+	try_files $uri $uri/ /index.html; \
+	} \
+	location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ { \
+	expires 1y; \
+	add_header Cache-Control "public, immutable"; \
+	} \
+	}' > /etc/nginx/conf.d/default.conf
 
-EXPOSE 4321
+EXPOSE 80
 
-CMD ["npm", "start"]
-
+CMD ["nginx", "-g", "daemon off;"]
 
 
 

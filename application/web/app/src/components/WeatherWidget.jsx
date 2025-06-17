@@ -17,7 +17,7 @@ const WeatherWidget = () => {
     "Berlin",
   ]);
  
-
+// TODO: Make sure the url is changed to match the deployment ( convert to env.)
   const fetchWeather = async (city) => {
     setLoading(true);
     setError(null);

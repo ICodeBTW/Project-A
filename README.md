@@ -74,9 +74,7 @@ Infrastructure is managed using AWS CloudFormation templates located in the `clo
 * Load balancers
 * Security groups
 * VPC and networking components
-
-Instructions for deployment can be added to the `scripts/` directory as shell scripts or automation tools like `aws-cli`.
-
+ 
 ## 🧪 Future Improvements
 
 * Integrate a database (e.g., DynamoDB or RDS)

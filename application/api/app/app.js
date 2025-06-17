@@ -1,10 +1,18 @@
 import express from 'express';
 import cors from 'cors';
+import 'dotenv/config'
 
 const app = express();
 const PORT = 3000;
 
 app.use(cors());
+app.use(cors({
+  origin: [
+    process.env.CLOUDFRONT_URL,
+    'http://localhost:4321' // for development
+  ]
+}));
+
 app.use(express.json());
 
 // TODO: Mock weather data - replace with actual API calls
@@ -61,6 +69,10 @@ app.get('/api/cities', (req, res) => {
   const cities = Object.keys(mockWeatherData);
   res.json(cities);
 });
+
+app.get('/health', (req,res) => {
+  res.status(200).send("Healthy");
+})
 
 app.listen(PORT, () => {
   console.log(`Express server running on http://localhost:${PORT}`);
