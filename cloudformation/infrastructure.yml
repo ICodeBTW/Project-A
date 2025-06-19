@@ -1,2 +1,0 @@
-AWSTemplateFormatVersion: '2010-09-09'
-Description: 'Infrastructure for Node.js API (ECS) and Astro Frontend (S3/CloudFront)'
