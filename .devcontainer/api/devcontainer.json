@@ -1,11 +1,8 @@
 // See https://containers.dev/implementors/json_reference/ for configuration reference
 {
-	"name": "Astro react weather app",
-	"build": {
-	  "dockerfile": "../app/Dockerfile",
-	  "target": "devagent"
-	},
-  
+	"name": "Express App",
+	"context": "${localWorkspaceFolder}/application/api/app",
+	"dockerFile": "${localWorkspaceFolder}/application/api/app/Dockerfile",
 	"workspaceFolder": "/app",
 	"customizations": {
 	  "vscode": {
@@ -27,11 +24,7 @@
 		  "stkb.rewrap",
 		  "vscode-icons-team.vscode-icons",
 		  "github.vscode-pull-request-github",
-		  "msjsdiag.vscode-react-native",
-		  "BracketPairColorDLW.bracket-pair-color-dlw",
-		  "dsznajder.es7-react-js-snippets",
-		  "bradlc.vscode-tailwindcss",
-		  "astro-build.astro-vscode"
+		  "BracketPairColorDLW.bracket-pair-color-dlw"
 		],
 		"settings": {
 				  "files.eol": "\n",
@@ -71,7 +64,7 @@
 	},
 	"mounts": [
 	  {
-		"source": "${localWorkspaceFolder}/app",
+		"source": "${localWorkspaceFolder}/application/api/app/",
 		"target": "/app/",
 		"type": "bind"
 	  },
@@ -81,8 +74,12 @@
 		"type": "volume"
 	  }
 	],
-	"appPort": 4321,
-	// "postCreateCommand": "sudo chown -R node:node /app && sudo chown -R node:node node_modules",
+
+	"runArgs": [
+		"--network=dev"
+	],
+	"appPort": 3000,
+	"postCreateCommand": "sudo chown node node_modules",
 	"remoteUser": "node"
   }
   
