@@ -6,8 +6,7 @@ WORKDIR /app
 COPY --chown=node:node package.json package-lock.json* ./
 RUN npm ci
 EXPOSE 3000
-ENTRYPOINT ["npm"]
-CMD ["run", "dev"]
+CMD ["npm","run", "dev"]
 
 # Production stage
 FROM node:22-alpine AS prodagent
@@ -23,6 +22,11 @@ RUN npm ci --omit=dev && npm cache clean --force
 
 # Copy application source code
 COPY --chown=node:node . .
- 
+
 EXPOSE 3000
+
+RUN chmod +x startup.sh
+
+ENTRYPOINT [ "startup.sh" ]
+
 CMD ["npm","run","serve"]
