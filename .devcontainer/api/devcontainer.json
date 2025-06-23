@@ -4,27 +4,36 @@
 	"context": "${localWorkspaceFolder}/application/api/app",
 	"dockerFile": "${localWorkspaceFolder}/application/api/app/Dockerfile",
 	"workspaceFolder": "/app",
+	"features": {
+		"ghcr.io/devcontainers/features/postgres:1": {
+			"version": "15"
+		  }
+	},
 	"customizations": {
+		"codespaces": {
+			"disableAutomaticConfiguration": true
+		  },
 	  "vscode": {
 		"extensions": [
-		  "dbaeumer.vscode-eslint",
-		  "esbenp.prettier-vscode",
-		  "bierner.color-info",
-		  "jpoissonnier.vscode-styled-components",
-		  "visualstudioexptteam.vscodeintellicode",
-		  "christian-kohler.npm-intellisense",
-		  "cssho.vscode-svgviewer",
-		  "eamodio.gitlens",
-		  "ms-azuretools.vscode-docker",
-		  "shardulm94.trailing-spaces",
-		  "davidanson.vscode-markdownlint",
-		  "IBM.output-colorizer",
-		  "Gruntfuggly.todo-tree",
-		  "bierner.emojisense",
-		  "stkb.rewrap",
-		  "vscode-icons-team.vscode-icons",
-		  "github.vscode-pull-request-github",
-		  "BracketPairColorDLW.bracket-pair-color-dlw"
+			"dbaeumer.vscode-eslint",
+			"esbenp.prettier-vscode",
+			"bierner.color-info",
+			"jpoissonnier.vscode-styled-components",
+			"visualstudioexptteam.vscodeintellicode",
+			"christian-kohler.npm-intellisense",
+			"cssho.vscode-svgviewer",
+			"eamodio.gitlens",
+			"ms-azuretools.vscode-docker",
+			"shardulm94.trailing-spaces",
+			"davidanson.vscode-markdownlint",
+			"IBM.output-colorizer",
+			"Gruntfuggly.todo-tree",
+			"bierner.emojisense",
+			"stkb.rewrap",
+			"vscode-icons-team.vscode-icons",
+			"github.vscode-pull-request-github",
+			"BracketPairColorDLW.bracket-pair-color-dlw",
+			"Prisma.prisma"
 		],
 		"settings": {
 				  "files.eol": "\n",
@@ -62,24 +71,25 @@
 			  }
 	  }
 	},
-	"mounts": [
-	  {
-		"source": "${localWorkspaceFolder}/application/api/app/",
-		"target": "/app/",
-		"type": "bind"
-	  },
-	  {
-		"source": "${localWorkspaceFolderBasename}_node_modules",
-		"target": "${containerWorkspaceFolder}/node_modules",
-		"type": "volume"
-	  }
-	],
+	// "mounts": [
+	//   {
+	// 	"source": "${localWorkspaceFolder}/application/api/app/",
+	// 	"target": "/app/",
+	// 	"type": "bind"
+	//   },
+	//   {
+	// 	"source": "${localWorkspaceFolderBasename}_node_modules",
+	// 	"target": "${containerWorkspaceFolder}/node_modules",
+	// 	"type": "volume"
+	//   }
+	// ],
 
 	"runArgs": [
 		"--network=dev"
 	],
 	"appPort": 3000,
-	"postCreateCommand": "sudo chown node node_modules",
+	// "postCreateCommand": "sudo chown node node_modules",
+	"postCreateCommand": "sudo service postgresql start",
 	"remoteUser": "node"
   }
   

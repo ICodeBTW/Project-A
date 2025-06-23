@@ -1,89 +1,91 @@
 // See https://containers.dev/implementors/json_reference/ for configuration reference
 {
-	"name": "Astro react weather app",
-	"build": {
-		"context": "${localWorkspaceFolder}/application/web/app/",
-	  "dockerfile": "${localWorkspaceFolder}/application/web/app/Dockerfile",
-	  "target": "devagent"
-	},
-  
-	"workspaceFolder": "/app",
-	"customizations": {
-	  "vscode": {
-		"extensions": [
-		  "dbaeumer.vscode-eslint",
-		  "esbenp.prettier-vscode",
-		  "bierner.color-info",
-		  "jpoissonnier.vscode-styled-components",
-		  "visualstudioexptteam.vscodeintellicode",
-		  "christian-kohler.npm-intellisense",
-		  "cssho.vscode-svgviewer",
-		  "eamodio.gitlens",
-		  "ms-azuretools.vscode-docker",
-		  "shardulm94.trailing-spaces",
-		  "davidanson.vscode-markdownlint",
-		  "IBM.output-colorizer",
-		  "Gruntfuggly.todo-tree",
-		  "bierner.emojisense",
-		  "stkb.rewrap",
-		  "vscode-icons-team.vscode-icons",
-		  "github.vscode-pull-request-github",
-		  "msjsdiag.vscode-react-native",
-		  "BracketPairColorDLW.bracket-pair-color-dlw",
-		  "dsznajder.es7-react-js-snippets",
-		  "bradlc.vscode-tailwindcss",
-		  "astro-build.astro-vscode"
-		],
-		"settings": {
-				  "files.eol": "\n",
-			  "editor.tabSize": 2,
-			  "remote.extensionKind": {
-				  "ms-azuretools.vscode-docker": "workspace"
-			  },
-			  "editor.codeActionsOnSave": {
-				  "source.fixAll.eslint": "always"
-			  },
-			  "eslint.validate": [
-				  "javascript",
-				  "javascriptreact",
-				  "typescript",
-				  "typescriptreact"
-			  ],
-			  "editor.formatOnSave": true,
-			  "[javascript]": {
-				  "editor.defaultFormatter": "esbenp.prettier-vscode",
-				  "editor.formatOnSave": false
-				},
-				"[javascriptreact]": {
-					"editor.defaultFormatter": "esbenp.prettier-vscode",
-					"editor.formatOnSave": false
-				},
-				"[typescript]": {
-					"editor.defaultFormatter": "esbenp.prettier-vscode",
-					"editor.formatOnSave": false
-				},
-				"[typescriptreact]": {
-					"editor.defaultFormatter": "esbenp.prettier-vscode",
-					"editor.formatOnSave": false
-				},
-				"prettier-eslint.eslintIntegration": true
-			  }
-	  }
-	},
-	"mounts": [
-	  {
-		"source": "${localWorkspaceFolder}/application/web/app/",
-		"target": "/app/",
-		"type": "bind"
-	  },
-	  {
-		"source": "${localWorkspaceFolderBasename}_node_modules",
-		"target": "${containerWorkspaceFolder}/node_modules",
-		"type": "volume"
-	  }
-	],
-	"appPort": 4321,
-	// "postCreateCommand": "sudo chown -R node:node /app && sudo chown -R node:node node_modules",
-	"remoteUser": "node"
-  }
-  
+  "name": "Astro react weather app",
+  "build": {
+    "context": "${localWorkspaceFolder}/application/web/app/",
+    "dockerfile": "${localWorkspaceFolder}/application/web/app/Dockerfile",
+    "target": "devagent"
+  },
+
+  "workspaceFolder": "/app",
+  "customizations": {
+    "codespaces": {
+      "disableAutomaticConfiguration": true
+    },
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bierner.color-info",
+        "jpoissonnier.vscode-styled-components",
+        "visualstudioexptteam.vscodeintellicode",
+        "christian-kohler.npm-intellisense",
+        "cssho.vscode-svgviewer",
+        "eamodio.gitlens",
+        "ms-azuretools.vscode-docker",
+        "shardulm94.trailing-spaces",
+        "davidanson.vscode-markdownlint",
+        "IBM.output-colorizer",
+        "Gruntfuggly.todo-tree",
+        "bierner.emojisense",
+        "stkb.rewrap",
+        "vscode-icons-team.vscode-icons",
+        "github.vscode-pull-request-github",
+        "msjsdiag.vscode-react-native",
+        "BracketPairColorDLW.bracket-pair-color-dlw",
+        "dsznajder.es7-react-js-snippets",
+        "bradlc.vscode-tailwindcss",
+        "astro-build.astro-vscode"
+      ],
+      "settings": {
+        "files.eol": "\n",
+        "editor.tabSize": 2,
+        "remote.extensionKind": {
+          "ms-azuretools.vscode-docker": "workspace"
+        },
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "always"
+        },
+        "eslint.validate": [
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact"
+        ],
+        "editor.formatOnSave": true,
+        "[javascript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode",
+          "editor.formatOnSave": false
+        },
+        "[javascriptreact]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode",
+          "editor.formatOnSave": false
+        },
+        "[typescript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode",
+          "editor.formatOnSave": false
+        },
+        "[typescriptreact]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode",
+          "editor.formatOnSave": false
+        },
+        "prettier-eslint.eslintIntegration": true
+      }
+    }
+  },
+  "mounts": [
+    {
+      "source": "${localWorkspaceFolder}/application/web/app/",
+      "target": "/app/",
+      "type": "bind"
+    },
+    {
+      "source": "${localWorkspaceFolderBasename}_node_modules",
+      "target": "${containerWorkspaceFolder}/node_modules",
+      "type": "volume"
+    }
+  ],
+  "appPort": 4321,
+  // "postCreateCommand": "sudo chown -R node:node /app && sudo chown -R node:node node_modules",
+  "remoteUser": "node"
+}
